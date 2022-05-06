@@ -67,8 +67,7 @@ class Mage:
 
     def tourPartie(self):
         self.tour == self.tour + 1
-        if (self.tour == self.tour + 1):
-            self.mana == self.mana + 1
+        self.mana == self.mana + 1
 
     def jouerCarte(self):
         print("vous avez", self.mana, "point de mana")
@@ -96,6 +95,8 @@ class Mage:
     def play(self):
         while(self.tour < 3 and not self.partieGagne()):
             self.jouerCarte()
+            self.tourPartie()
+            print("la partie a duré", self.tour, "tour")
 
 myGame = Mage("John",2,20)
 myGame.play()
