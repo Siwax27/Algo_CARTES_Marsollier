@@ -26,6 +26,7 @@ class cristal(carte):
         super().__init__(nom)
         self.desc = description
         self.attr = attribut
+        self.valeur = 5
 
 class créature(carte):
     def __init__(self, nom, mana, description, attribut):
@@ -39,9 +40,10 @@ class Mage:
         self.carte = [carte("dragon",10,"un puissant dragon qui crache du feu","boule de feu"),carte("soldat",5,"un soldat lambda","coup d'épée")]
         self.defausse = 0
         self.name = nom
+        self.tour = 0
 
     def manaJ(self):
-        self.mana = 100
+        self.mana = 2
         return self.mana
 
     def defausseCarte(self):
@@ -53,20 +55,26 @@ class Mage:
     
 
     def jouerCarte(self):
+        self.tour += 1
+        print("vous avez", self.mana, "point de mana")
         propositionJ = input("quel carte voulez vous jouer ?\n")
-        if(propositionJ == "dragon"):
-            print ("vous avez poser la carte dragon sur le jeu")
-            self.mana = self.mana - 10
-            print("il vous reste ",self.mana," de mana")
+        if(propositionJ == "dragon" ):
+            if (self.mana != 10):
+                print ("vous ne pouvez pas poser cette carte")
+            else :
+                print ("vous avez poser la carte dragon sur le jeu")
+                self.mana = self.mana - 10
         if(propositionJ == "soldat"):
-            print("vous avez poser la carte ",propositionJ, "sur le jeu")
-            self.mana = self.mana - 5
-            print("il vous reste ",self.mana," point de mana")
+            if (self.mana != 5):
+                print ("vous ne pouvez pas poser cette carte")
+            else :
+                print("vous avez poser la carte ",propositionJ, "sur le jeu")
+        if (self.tour == self.tour + 1):
+            self.mana += 1 
 
     def play(self):
         print("vois ci vos carte en main", self.carte)
         self.jouerCarte()
-        print("bien joué vous avez poser une carte")
 
-myGame = Mage("John",100,20)
+myGame = Mage("John",2,20)
 myGame.play()
