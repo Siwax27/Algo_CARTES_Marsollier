@@ -44,18 +44,17 @@ class Mage:
         self.hpE = 20
 
     def partieGagne(self):
-        win = False
+        win = True
         if(self.Hp <= 0):
-            win = True
+            win = win
             print("Défaite !")
         if(self.hpE <= 0):
-            win = True
+            win = win
             print("Victoire !")
         
 
 
     def manaJ(self):
-        self.mana = 2
         return self.mana
 
     def defausseCarte(self):
@@ -64,10 +63,9 @@ class Mage:
 
     def pvJ(self):
         return self.Hp
-    
 
     def jouerCarte(self):
-        self.tour += 1
+        self.tour == self.tour + 1
         print("vous avez", self.mana, "point de mana")
         propositionJ = input("quel carte voulez vous jouer ?\n")
         if(propositionJ == "dragon" ):
@@ -75,7 +73,6 @@ class Mage:
                 print ("vous ne pouvez pas poser cette carte")
             else :
                 print ("vous avez poser la carte dragon sur le jeu")
-                self.mana = self.mana - 10
         if(propositionJ == "soldat"):
             if (self.mana != 5):
                 print ("vous ne pouvez pas poser cette carte")
@@ -85,6 +82,9 @@ class Mage:
             self.mana += 1 
         if (self.mana == 10):
             print("votre mana est au maximum")
+        if (self.tour == self.tour + 1):
+            self.hpE -= 5
+            print("l'ennemi a pris des dégat, il lui reste :", self.hpE, "point de vie !")
 
     def play(self):
         while(self.tour<3 and not self.partieGagne()):
