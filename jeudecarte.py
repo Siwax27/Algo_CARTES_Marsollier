@@ -1,3 +1,4 @@
+from operator import truediv
 from unicodedata import name
 
 
@@ -47,13 +48,14 @@ class Mage:
         self.hpE = 20
 
     def partieGagne(self):
-        win = True
+        win = False
         if(self.Hp <= 0):
-            win = win
+            win = True
             print("Défaite !")
         if(self.hpE <= 0):
-            win = win
+            win = True
             print("Victoire !")
+        return win
 
     def defausseCarte(self):
         self.defausse = self.defausse + 1
@@ -84,7 +86,7 @@ class Mage:
             print ("vous avez piocher une carte")
         if (self.mana == 10):
             print("votre mana est au maximum")
-        self.hpE -= 10
+        self.hpE -= 5
         print("l'ennemi a pris des dégat, il lui reste :", self.hpE, "point de vie !")
 
     def play(self):
