@@ -67,19 +67,25 @@ class Mage:
     def jouerCarte(self):
         self.tour == self.tour + 1
         print("vous avez", self.mana, "point de mana")
-        propositionJ = input("quel carte voulez vous jouer ?\n")
-        if(propositionJ == "dragon" ):
-            if (self.mana != 10):
-                print ("vous ne pouvez pas poser cette carte")
-            else :
-                print ("vous avez poser la carte dragon sur le jeu")
-        if(propositionJ == "soldat"):
-            if (self.mana != 5):
-                print ("vous ne pouvez pas poser cette carte")
-            else :
-                print("vous avez poser la carte ",propositionJ, "sur le jeu")
-        if (self.tour == self.tour + 1):
-            self.mana += 1 
+        choixJ = input("que voulez vous faire attaquer ou piocher")
+
+        if (choixJ == "attaquer"):
+            propositionJ = input("quel carte voulez vous jouer ?\n")
+            if(propositionJ == "dragon" ):
+                if (self.mana != 10):
+                    print ("vous ne pouvez pas poser cette carte")
+                else :
+                    print ("vous avez poser la carte dragon sur le jeu")
+            if(propositionJ == "soldat"):
+                if (self.mana != 5):
+                    print ("vous ne pouvez pas poser cette carte")
+                else :
+                    print("vous avez poser la carte ",propositionJ, "sur le jeu")
+            if (self.tour == self.tour + 1):
+                self.mana += 1
+        if (choixJ == "piocher"):
+            print ("vous avez piocher une carte")
+             
         if (self.mana == 10):
             print("votre mana est au maximum")
         if (self.tour == self.tour + 1):
@@ -87,7 +93,7 @@ class Mage:
             print("l'ennemi a pris des dégat, il lui reste :", self.hpE, "point de vie !")
 
     def play(self):
-        while(self.tour<3 and not self.partieGagne()):
+        while(self.tour == 3 and not self.partieGagne()):
             print("vois ci vos carte en main", self.carte)
             self.jouerCarte()
 
