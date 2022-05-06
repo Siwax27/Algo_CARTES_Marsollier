@@ -37,6 +37,10 @@ class soldat(carte):
     def __init__(self, nom, mana, description, attribut):
         super().__init__(nom, mana, description, attribut)
 
+class blast(carte):
+    def __init__(self, nom, mana, description, attribut):
+        super().__init__(nom, mana, description, attribut)
+
 class Mage:
     def __init__(self,nom,mana,pv):
         self.mana = mana
