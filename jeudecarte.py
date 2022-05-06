@@ -51,24 +51,15 @@ class Mage:
         if(self.hpE <= 0):
             win = win
             print("Victoire !")
-        
-
-
-    def manaJ(self):
-        return self.mana
 
     def defausseCarte(self):
         self.defausse = self.defausse + 1
         return self.defausse
 
-    def pvJ(self):
-        return self.Hp
-
     def jouerCarte(self):
         self.tour == self.tour + 1
         print("vous avez", self.mana, "point de mana")
         choixJ = input("que voulez vous faire attaquer ou piocher")
-
         if (choixJ == "attaquer"):
             propositionJ = input("quel carte voulez vous jouer ?\n")
             if(propositionJ == "dragon" ):
