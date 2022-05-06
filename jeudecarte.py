@@ -68,6 +68,7 @@ class Mage:
         print("vous avez", self.mana, "point de mana")
         choixJ = input("que voulez vous faire attaquer ou piocher\n")
         if (choixJ == "attaquer"):
+            print("vois ci vos carte en main", self.carte)
             propositionJ = input("quel carte voulez vous jouer ?\n")
             if(propositionJ == "dragon" ):
                 if (self.mana != 10):
@@ -81,16 +82,13 @@ class Mage:
                     print("vous avez poser la carte ",propositionJ, "sur le jeu")
         if (choixJ == "piocher"):
             print ("vous avez piocher une carte")
-             
         if (self.mana == 10):
             print("votre mana est au maximum")
-        if (self.tour == self.tour + 1):
-            self.hpE -= 5
-            print("l'ennemi a pris des dégat, il lui reste :", self.hpE, "point de vie !")
+        self.hpE -= 10
+        print("l'ennemi a pris des dégat, il lui reste :", self.hpE, "point de vie !")
 
     def play(self):
         while(self.tour < 3 and not self.partieGagne()):
-            print("vois ci vos carte en main", self.carte)
             self.jouerCarte()
 
 myGame = Mage("John",2,20)
