@@ -1,3 +1,6 @@
+from unicodedata import name
+
+
 class carte:
     def __init__(self,nom,mana,description,attribut):
         self.mana = mana
@@ -16,12 +19,20 @@ class carte:
 
     def getAttribut(self):
         return self.attr
-    
+
+class cristal(carte):
+    def __init__(self,nom,mana,description,attribut):
+        self.mana = mana
+        super().__init__(nom)
+        self.desc = description
+        self.attr = attribut
+
+
 class Mage:
-    def __init__(self,nom,mana,pv,):
+    def __init__(self,nom,mana,pv):
         self.mana = mana
         self.Hp = pv
-        self.main = [carte("dragon",10,"un puissant dragon qui crache du feu","boule de feu\n"),carte("soldat",5,"un soldat lambda","coup d'épée\n")]
+        self.carte = [carte("dragon",10,"un puissant dragon qui crache du feu","boule de feu"),carte("soldat",5,"un soldat lambda","coup d'épée")]
         self.defausse = 0
         self.name = nom
 
@@ -32,30 +43,24 @@ class Mage:
     def defausseCarte(self):
         self.defausse = self.defausse + 1
         return self.defausse
-        
-    def carteMain(self):
-        return self.main
 
     def pvJ(self):
         return self.Hp
     
-    def mainJ(self):
-        self.main = 7
-        return self.main
-    
+
     def jouerCarte(self):
-        print("vois ci vos carte en main", self.main)
-        propositionJ = int(input("quel carte voulez vous jouer ?\n"))
+        propositionJ = input("quel carte voulez vous jouer ?\n")
         if(propositionJ == "dragon"):
             print ("vous avez poser la carte dragon sur le jeu")
             self.mana = self.mana - 10
-        else :
+            print("il vous reste ",self.mana," de mana")
+        if(propositionJ == "soldat"):
             print("vous avez poser la carte ",propositionJ, "sur le jeu")
-            self.mana = self.mana - propositionJ
-        
+            self.mana = self.mana - 5
+            print("il vous reste ",self.mana," point de mana")
 
     def play(self):
-        self.carteMain()
+        print("vois ci vos carte en main", self.carte)
         self.jouerCarte()
         print("bien joué vous avez poser une carte")
 
